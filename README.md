@@ -1,0 +1,1 @@
+Make a simple Todo list as part of [The Odin Project's curriculum](https://www.theodinproject.com/courses/javascript/lessons/todo-list).
