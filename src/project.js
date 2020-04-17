@@ -6,9 +6,7 @@ const project = (title, description, dueDate, priority) => {
     const getDescription = () => description;
     const getDueDate = () => dueDate;
     const getPriority = () => priority;
-    const addTodo = (todo) => {
-        todos.push(todo);
-    }
+    const addTodo = (todo) => todos.push(todo)
     const getTodos = () => todos;
     return { getTitle, getDescription, getDueDate, getPriority, addTodo, getTodos }
 }
