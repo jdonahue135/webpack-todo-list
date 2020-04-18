@@ -14,7 +14,7 @@ const sampleProject2 = project('Clean the garage', 'projDescriptionn', 'May 1', 
 projectList.push(sampleProject);
 projectList.push(sampleProject2);
 
-const todoItem = todo('take out the trash', 'take out the trash', 'May 1', 'High');
+const todoItem = todo('Take out the trash', 'take out the trash', 'May 1', 'High');
 const todoItem2 = todo('Do the dishes', 'Do the dishes', 'May 1', 'High');
 
 
@@ -24,4 +24,4 @@ sampleProject.addTodo(todoItem2);
 
 
 renderSidebar(projectList);
-renderMain(sampleProject.getTodos());
+renderMain(sampleProject);

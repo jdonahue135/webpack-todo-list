@@ -1,15 +1,53 @@
+body {
+    font-family: 'Varela', sans-serif;
+}
+#app {
+    height: 100vh;
+    width: 80vw;
+    background-color: rgb(189, 186, 186);
+}
 .header {
-    background-color: cadetblue;
+    position: relative;
+    background-color: white;
+    text-align: center;
+    height: 10vh;
+    border-bottom: thin rgb(189, 186, 186);
+}
+.header h1 {
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+    margin: 0;
 }
 .content {
     display: flex;
+    height: 90vh;
+    background-color: rgb(189, 186, 186);
 }
 #sidebar {
-    flex: 30%;
-    background-color: grey;
-    color: honeydew;
+    flex: 20%;
+    background-color: rgb(245, 243, 243);
+    padding-top: 20px;
 }
 #main {
     flex: 70%;
-    background-color: azure
+    background-color: white;
+    margin: 20px;
+}
+#main h2 {
+    background-color: rgb(189, 186, 186);
+    margin: 0;
+    padding: 20px;
+}
+#sidebar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+#sidebar h2 {
+    margin: 0;
+    padding: 20px;
+}
+#main ul {
+    list-style-type: circle;
 }
