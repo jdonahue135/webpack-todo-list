@@ -30,9 +30,19 @@ body {
     padding-top: 20px;
 }
 #main {
-    flex: 70%;
+    flex: 35%;
     background-color: white;
     margin: 20px;
+}
+#detail {
+    flex: 35%;
+    background-color: white;
+    margin: 20px;
+    margin-top: 90px;
+}
+#detail h2 {
+    text-align: center;
+    padding-top: 150px;
 }
 #main h2 {
     background-color: rgb(189, 186, 186);

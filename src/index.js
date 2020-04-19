@@ -8,17 +8,12 @@ import renderMain from './renderMain';
 let projectList = []
 
 //dummy content to test app
-const sampleProject = project('Clean the house', 'projDes', 'May 1', 'High');
-const sampleProject2 = project('Clean the garage', 'projDescriptionn', 'May 1', 'High');
-
+const sampleProject = project('Clean the house');
+const sampleProject2 = project('Clean the garage');
 projectList.push(sampleProject);
 projectList.push(sampleProject2);
-
 const todoItem = todo('Take out the trash', 'take out the trash', 'May 1', 'High');
 const todoItem2 = todo('Do the dishes', 'Do the dishes', 'May 1', 'High');
-
-
-
 sampleProject.addTodo(todoItem);
 sampleProject.addTodo(todoItem2);
 
