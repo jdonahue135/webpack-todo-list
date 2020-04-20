@@ -2,6 +2,7 @@ import todo from './todo';
 import project from './project';
 import renderSidebar from './renderSidebar';
 import renderMain from './renderMain';
+import renderDetail from './renderDetail';
 
 
 //Storage for projects and todo items during development
@@ -19,4 +20,5 @@ sampleProject.addTodo(todoItem2);
 
 
 renderSidebar(projectList);
-renderMain(sampleProject);
+renderMain(projectList[0]);
+renderDetail(projectList[0].getTodos()[0])

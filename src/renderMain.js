@@ -1,4 +1,4 @@
-import todo from './todo';
+import project from './project';
 import renderDetail from './renderDetail';
 
 const renderMain = (project) => {
@@ -27,23 +27,16 @@ const renderMain = (project) => {
             renderDetail(todoList[x]);
         })
     }
-    let addNew = document.createElement('button');
-
-    //INCOMPLETE: render add new button
-    addNew.textContent = "+ Add new"
+    let addNew = document.createElement('input');
+    addNew.setAttribute('placeholder', '+ Add New')
     ul.appendChild(addNew);
-    addNew.addEventListener('click', () => {
-        ul.removeChild(addNew);
-        let form = document.createElement('input');
-        ul.appendChild(form);
-        form.addEventListener('keydown', (e) => {
-            if (e.keyCode === 13) {
-                let newTodo = todo(form.value);
-                project.addTodo(newTodo);
-                ul.removeChild(form);
-                renderMain(project);
-            }
-        })
+    addNew.addEventListener('keydown', (e) => {
+        if (e.keyCode === 13) {
+            let newTodo = todo(addNew.value);
+            project.addTodo(newTodo);
+            ul.removeChild(addNew);
+            renderMain(project);
+        }
     })
 }
 
