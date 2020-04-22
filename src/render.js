@@ -58,9 +58,12 @@ const renderMain = (project) => {
     for (let x=0; x < todoList.length; x++) {
         let li = document.createElement('li');
         li.textContent = todoList[x].title;
+        let p = document.createElement('p')
+        p.textContent = todoList[x].date;
+        li.appendChild(p);
         ul.appendChild(li);
         li.addEventListener('click', () => {
-            renderDetail(todoList[x], project);
+            renderDetail(todoList[x]);
         })
     }
     let addNew = document.createElement('input');
@@ -69,19 +72,19 @@ const renderMain = (project) => {
     addNew.addEventListener('keydown', (e) => {
         if (e.keyCode === 13) {
             let newTodo = todo(addNew.value);
+            newTodo.project = project;
             project.addTodo(newTodo);
             ul.removeChild(addNew);
             renderMain(project);
+            renderDetail(newTodo);
         }
     })
 }
 const renderDetail = (todoItem) => {
-    if (!todoItem) {
-        todoItem = projectList[0].getTodos()[0];
-    }
     
     const detail = document.querySelector('#detail');
-    
+    let project = todoItem.project;
+
     //remove current content
     let element = detail.lastElementChild;
     while (element) {
@@ -103,6 +106,7 @@ const renderDetail = (todoItem) => {
             label.textContent = `${keys[x].charAt(0).toUpperCase() + keys[x].slice(1)}:`;
             container.appendChild(label);
             let element = document.createElement('input');
+            element.setAttribute('id', keys[x]);
             if (todoItem[keys[x]] == undefined) {
                 element.setAttribute('placeholder', `add ${keys[x]}`)
             } else { element.value = todoItem[keys[x]]; }
@@ -111,6 +115,7 @@ const renderDetail = (todoItem) => {
 
         let priority = document.createElement('input');
         priority.setAttribute('type', 'checkbox');
+        priority.setAttribute('value', 'true');
         if (todoItem.priority == true) { priority.setAttribute('checked', 'true')}
         container.appendChild(priority);
         let priorityLabel = document.createElement('label');
@@ -120,11 +125,25 @@ const renderDetail = (todoItem) => {
         deleteButton.textContent = 'Delete'
         deleteButton.setAttribute('type', 'button');
         deleteButton.addEventListener('click', () => {
-            console.log(project)
             project.deleteTodo(todoItem);
+            renderMain(project);
             renderDetail(project.getTodos()[0])
         })
+        let saveButton = document.createElement('button')
+        saveButton.textContent = 'Save'
+        saveButton.setAttribute('type', 'button');
+        saveButton.addEventListener('click', () => {
+            let checkbox;
+            if (priority.value == 'true') {
+                checkbox = true;
+            } else { checkbox = false }
+            let newTodo = todo(title.value, description.value, date.value, checkbox, project)
+            project.updateTodo(todoItem, newTodo);
+            renderMain(project);
+            renderDetail(newTodo);
+        })
         container.appendChild(deleteButton);
+        container.appendChild(saveButton);
     }
 }
 
