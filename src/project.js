@@ -2,10 +2,10 @@
 
 const project = (title) => {
     const todos = []
-    const getTitle = () => title;
     const addTodo = (todo) => todos.push(todo)
+    const deleteTodo = (todo) => todos.splice(todo, 1);
     const getTodos = () => todos;
-    return { getTitle, addTodo, getTodos }
+    return { title, addTodo, getTodos, deleteTodo }
 }
 
 export default project

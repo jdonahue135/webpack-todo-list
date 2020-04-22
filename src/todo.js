@@ -1,14 +1,8 @@
 //factory function for todo object
 
-const todo = (title, description, dueDate, priority) => {
+const todo = (title, description, date, priority) => {
     let status = false;
-    const getTitle = () => title;
-    const getDescription = () => description;
-    const getDueDate = () => dueDate;
-    const getPriority = () => priority;
-    const getStatus = () => status;
-    const doTask = () => this.status = true;
-    return { getTitle, getDescription, getDueDate, getPriority, getStatus, doTask }
+    return { title, description, date, priority, status }
 }
 
 export default todo
