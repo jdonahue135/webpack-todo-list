@@ -1,20 +1,17 @@
-import todo from './todo';
-import project from './project';
+import { storageAvailable, populateDummyContent, convertStorageArray, appendTodosToProject } from './localStorage'
 import { render } from './render';
 
+//configure localStorage
+if (storageAvailable('localStorage')) {
+    if (!localStorage.getItem('projectList')) {
+        //save dummy todoList and projectList in local storage
+        populateDummyContent()
+    }
 
-//Storage for projects and todo items during development
-let projectList = []
+    //make todo and project objects from JSON
+    let projectList = convertStorageArray('projectList');
+    let todoList = convertStorageArray('todoList');
+    appendTodosToProject(projectList, todoList);
 
-//dummy content to test app
-const sampleProject = project('Clean the house');
-const sampleProject2 = project('Clean the garage');
-projectList.push(sampleProject);
-projectList.push(sampleProject2);
-const todoItem = todo('Take out the trash', 'take out the trash', 'May 1', true, sampleProject);
-const todoItem2 = todo('Do the dishes', 'do the dishes', 'May 2', false, sampleProject);
-sampleProject.addTodo(todoItem);
-sampleProject.addTodo(todoItem2);
-
-
-render(projectList);
+    render(projectList, todoList);
+}
